@@ -31,7 +31,7 @@ python manage.py migrate
 Use the custom management command to load CSV data into the database:
 
 ```bash
-python manage.py csvloader
+python manage.py csvloader --file_path <file-path>
 ```
 
 ### 4. Start the Development Server
