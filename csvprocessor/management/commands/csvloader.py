@@ -9,9 +9,14 @@ from django.db import connection
 class Command(BaseCommand):
     help = 'Load dataset from CSV file'
 
+    def add_arguments(self, parser):
+        parser.add_argument('--file_path', type=str, help='Path to the CSV file', required=True)
+
+
     def handle(self, *args, **options):
         
-        df = pd.read_csv('/Users/rajatkhatri/Documents/Django_code_project/djangoTutorial/csvprocessor/large_dataset.csv')
+        file_path = options['file_path']
+        df = pd.read_csv(file_path)
 
         df.dropna(inplace=True)
         df['stock'] = df['stock'].abs()
